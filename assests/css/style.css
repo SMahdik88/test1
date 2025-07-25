@@ -1,5 +1,5 @@
 .w-full{
-    width: 300px;
+    width: 100%;
 }
 .style_picture{
     margin-top: 150px;    
@@ -18,4 +18,19 @@
 
 .filter_shadow{
     filter: drop-shadow(2px 4px 6px black)
+}
+
+@media(min-width:600px){
+
+    .top-navbar{
+        box-shadow: 0px 0px 50px gray !important;
+    }
+}
+.radius{
+    border-radius: 3rem;
+}
+
+.position{
+    position: relative;
+    top: 3px;
 }
