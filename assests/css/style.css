@@ -1,0 +1,21 @@
+.w-full{
+    width: 100%;
+}
+.style_picture{
+    margin-top: 150px;    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.style_button{
+    margin-top: 7px;
+    width: 250px;
+    border-radius: 3rem;
+}
+
+
+.filter_shadow{
+    filter: drop-shadow(2px 4px 6px black)
+}
