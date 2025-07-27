@@ -25,6 +25,11 @@
     .top-navbar{
         box-shadow: 0px 0px 50px gray !important;
     }
+
+    #top_actions_section{
+        display: flex !important;
+        align-items: center !important;
+    }
 }
 .radius{
     border-radius: 3rem;
