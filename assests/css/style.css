@@ -51,5 +51,20 @@
 
 
 .user_list_item.active , .user_list_item.active .collapsible-header{
-    background: gray;
+    background: rgba(128, 128, 128, 0.582);
+}
+
+.icons{
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
+table.highlight > tbody > tr {
+  -webkit-transition: background-color .25s ease;
+  transition: background-color .25s ease;
+}
+
+table.highlight > tbody > tr:hover {
+  background-color: rgba(12, 44, 221, 0.603);
 }
