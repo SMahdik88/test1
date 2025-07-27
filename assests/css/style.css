@@ -39,3 +39,17 @@
     position: relative;
     top: 3px;
 }
+
+
+.user_list_item .user_list_arrow_icon{
+    transition: all 200ms ease;
+}
+
+.user_list_item.active .user_list_arrow_icon{
+    transform: rotate(180deg);
+}
+
+
+.user_list_item.active , .user_list_item.active .collapsible-header{
+    background: gray;
+}

@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assests/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="/assests/css/style.css">
+    <link rel="stylesheet" href="/assests/css/util.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -50,7 +51,7 @@
 
 
   <!-- ______navbar_________start____________ -->
-  <section id="top_actions_section" class="row">
+  <section id="top_actions_section" class="row m-0-2">
 
   <!-- Add Button -->
   <div class="col s12 m3 l2 p-l-10 p-r-10 p-t-10">
@@ -76,8 +77,43 @@
 </section>
 
 
+  <section>
+    <ul class="collapsible">
+      <li class="user_list_item">
+        <div class="collapsible-header">
+          <i class="material-icons blue-text darken-2 user_list_arrow_icon">arrow_drop_down_circle</i>
+          Mahdi Mdian
+        </div>
+
+          <div class="collapsible-body"> 
+            <div class="p-all-5">
+              <span class="f-bold">Username: </span>
+              <span>MahdiK</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">Email: </span>
+              <span>mirdamadiyans@gmail.com</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">address: </span>
+              <span>example</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">action: </span>
+              <i class="material-icons red-text m-l-5 m-r-5 m-t-5">delete_forever</i>
+              <i class="material-icons yellow-text m-l-5 m-r-5">edit</i>
+            </div>
+
+          </div>
+      </li>
+    </ul>
+
+  </section>
+
 
     <script src="/assests/materialize/js/materialize.min.js"></script>
-    <script src="/assests/js/main.js"></script>
+    <script src="/assests/js/app.js"></script>
+    <script src="/assests/js/user.js"></script>
+    
 </body>
 </html>
