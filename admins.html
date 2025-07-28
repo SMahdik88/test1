@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assests/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/assests/materialize/css/materialize.css">
     <link rel="stylesheet" href="/assests/css/style.css">
     <link rel="stylesheet" href="/assests/css/util.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7e901d420c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -20,10 +22,12 @@
         <li><a href="https://www.netflix.com/">Netflix</a></li>
         <li><a href="collapsible.html">Sqiud Game</a></li>
         <li><a href="http://www.youtube.com/@mahdimirdamadiyan4413">youtube</a></li>
-        <script src="https://kit.fontawesome.com/7e901d420c.js" crossorigin="anonymous"></script>
       </ul>
     </div>
   </nav>
+
+  <!-- ------- Mobile screen ------- -->
+
 
   <ul class="sidenav" id="mobile-demo">
     <li><div class="user-view">
@@ -56,7 +60,7 @@
 
   <!-- Add Button -->
   <div class="col s12 m6 l4 p-l-10 p-r-10 p-t-10">
-    <button class="waves-effect waves-light btn blue darken-2 w-full radius" style="margin-top: 10px;">
+    <button id="add_user_button" class="waves-effect waves-light btn blue darken-2 w-full radius" style="margin-top: 10px;">
       <i class="material-icons left">add</i>
       Add Guard
     </button>
@@ -67,7 +71,7 @@
     <div class="input-field">
       <input id="Search" type="text" class="validate">
       <label for="Search">
-        <i class="material-icons">search</i>  
+        <i class="material-icons search">search</i>  
         Search
       </label>
     </div>
@@ -183,8 +187,9 @@
 
     </div>
 
-
-    <div class="pagination-container container p-l-10 p-r-10 p-t-15 p-b-9 flex-sb-m pos-fixid left-0 right-0 bootom-0 z-depth-4">
+    <!-- ----- show list ----- -->
+    <div class="container p-l-10 p-r-10 p-t-15 p-b-10
+     flex-sb-m pos-fixed left-0 right-0 bottom-0 z-depth-4 rounded_top_30">
       <div class="pagination-item-counts flex-l p-l-10 flex-l-m">
         showing
         <span class="m-l-5 m-r-5 max-w-50">
@@ -193,17 +198,54 @@
         of
         <span class="blue-text darken-2 m-l-5 m-r-5">100</span>
       </div>
+
+      <div>
+      <i class="material-icons right blue darken-2 white-text m-l-10 m-r-10
+        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_right
+        </i>
+      <i class="material-icons right blue darken-2 white-text 
+        m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_left
+        </i>
+    </div>
     </div>
 
-    <div class="pgination_buttons">
-      <i class="fa-regular fa-circle-left m-l-5 m-r-5 p-l-5 p-r-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill">
-        </i>
-      <i class="fa-regular fa-circle-right m-l-5 m-r-5 p-l-5 p-r-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill">
-        </i>
-    </div>
+    
 
   </section>
 
+
+  <!-- -------- form add guard -------- -->
+
+  <div class="add_user_modal_black dis-none"></div>
+  <div class="add_user_modal container rounded_top_30 trans-0-1">
+    <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center-align">
+      <h5>
+        <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person_add</i>
+        Add user
+      </h5>
+
+      <form>
+        <div class="input-field">
+          <input id="name" type="text" class="validate">
+          <label for="name">name:</label> 
+        <div class="input-field">
+          <input id="username" type="text" class="validate">
+          <label for="username">username</label>
+        <div class="input-field">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email:</label>
+        </div>
+
+        <button type="button" class="waves-effect waves-light btn blue darken-2 m-t-20 m-b-10
+           w-full max-w-250 rounded_pill">
+          submit
+
+        </button>
+
+
+      </form>
+    </div>
+  </div>
 
 
     <script src="/assests/materialize/js/materialize.min.js"></script>
