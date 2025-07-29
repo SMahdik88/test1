@@ -1,3 +1,8 @@
+*{
+    direction: rtl;
+}
+
+
 .w-full{
     width: 100%;
 }
@@ -96,4 +101,8 @@ table.highlight > tbody > tr:hover {
 .add_user_modal.show{
     bottom: 0;
     box-shadow: 0 0 10px blue
+}
+
+.sidenav_link_icon{
+    margin: 0 0 0 25px !important;
 }
