@@ -6,20 +6,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assests/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="/assests/materialize/css/materialize.css">
-    <link rel="stylesheet" href="/assests/materialize/css/materialize-rtl.css">
     <link rel="stylesheet" href="/assests/css/style.css">
     <link rel="stylesheet" href="/assests/css/util.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7e901d420c.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="/assests/images/squid-game-logo.ico">
 </head>
-<body dir="rtl">
+<body>
 
     <nav>
     <div class="nav-wrapper indigo accent-3 top-navbar">
       <a href="#!" class="hide-on-med-and-up">Gaurds managment</a>
-      <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right dis-flex hide-on-med-and-down">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="dis-flex hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="https://www.netflix.com/">Netflix</a></li>
         <li><a href="collapsible.html">Sqiud Game</a></li>
@@ -44,9 +43,9 @@
         <span class="white-text email">mirdamadiyans@gmail.com</span></a>
     </div></li>
     <li><a href="http://www.youtube.com/@Netflix">
-      <i class="right sidenav_link_icon material-icons">insert_link</i>netflix</a></li>
+      <i class="sidenav_link_icon material-icons">insert_link</i>netflix</a></li>
     <li><a href="http://www.youtube.com/@mahdimirdamadiyan4413">
-      <i class="right sidenav_link_icon material-icons">insert_link</i>Mahdi Mirdamadiyan</a></li>
+      <i class="sidenav_link_icon material-icons">insert_link</i>Mahdi Mirdamadiyan</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">accounts</a></li>
     <li><a class="waves-effect" href="/Guards.html">Guards</a></li>
@@ -134,7 +133,7 @@
           </tr>
         </thead>
 
-        <tbody>
+        <tbody class="desktop_table_body">
           <tr>
             <td>1</td>
             <td>Mahdi</td>
@@ -191,7 +190,7 @@
 
     <!-- ----- show list ----- -->
     <div class="container p-l-10 p-r-10 p-t-15 p-b-10
-     flex-sb-m pos-fixed left-0 right-0 bottom-0 z-depth-4 rounded_top_30">
+     flex-sb-m pos-fixed left-0 right-0 bottom-0 z-depth-4 rounded_top_30 white">
       <div class="pagination-item-counts flex-l p-l-10 flex-l-m">
         showing
         <span class="m-l-5 m-r-5 max-w-50">
@@ -202,11 +201,11 @@
       </div>
 
       <div>
-      <i class="material-icons right blue darken-2 white-text m-l-10 m-r-10
-        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_right
-        </i>
-      <i class="material-icons right blue darken-2 white-text 
+      <i class="material-icons blue darken-2 white-text m-l-10 m-r-10
         m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_left
+        </i>
+      <i class="material-icons blue darken-2 white-text 
+        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_right
         </i>
     </div>
     </div>
@@ -215,6 +214,14 @@
 
   </section>
 
+  <section id="test_section" class="grey" x-data="mainData()">
+    
+    
+    
+    11111
+    <span  x-text="message" class="red"></span>
+    <button class="btn" x-on:click="testFunc()">click</button>
+  </section>
 
   <!-- -------- form add guard -------- -->
 
@@ -249,10 +256,10 @@
     </div>
   </div>
 
-
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="/assests/materialize/js/materialize.min.js"></script>
-    <script src="/assests/js/app.js"></script>
     <script src="/assests/js/user.js"></script>
+    <script src="/assests/js/app.js"></script> 
     
 </body>
 </html>
