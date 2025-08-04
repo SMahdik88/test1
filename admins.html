@@ -138,7 +138,7 @@
 
   <section class="user_list_section" x-init="getUsers()">
     <ul class="collapsible hide-on-med-and-up">
-      <template x-for="user in users">
+      <template x-for="user in pageUsers">
         <li class="user_list_item">
         <div class="collapsible-header">
           <i class="material-icons blue-text darken-2 user_list_arrow_icon">arrow_drop_down_circle</i>
@@ -187,7 +187,7 @@
         </thead>
 
         <tbody class="desktop_table_body">
-          <template x-for="user in users">
+          <template x-for="user in pageUsers">
             <tr>
               <td x-text="user.id"></td>
               <td x-text="user.name"></td>
@@ -201,18 +201,6 @@
               </td>
             </tr>
           </template>
-          <tr>
-            <td>1</td>
-            <td>Mahdi</td>
-            <td>SMahdik88</td>
-            <td>example@gmail.com</td>
-            <td>example</td>
-            <td>
-              <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
-              <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
-                delete_forever</i>
-            </td>
-          </tr>
         </tbody>
       </table>
 
@@ -231,12 +219,14 @@
         <span class="blue-text darken-2 m-l-5 m-r-5">100</span>
       </div>
 
-      <div>
+      <strong x-text="currentPage" class="blue-text page_number"></strong>
+
+      <div class="pgnation_buttons">
       <i class="material-icons blue darken-2 white-text m-l-10 m-r-10
-        m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_left
+        m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius" x-on:click="prevPage()">keyboard_arrow_left
         </i>
       <i class="material-icons blue darken-2 white-text 
-        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius">keyboard_arrow_right
+        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius" x-on:click="nextPage()">keyboard_arrow_right
         </i>
     </div>
     </div>
@@ -248,8 +238,8 @@
   
   <!-- -------- form add guard -------- -->
 
-  <div class="add_user_modal_black" x-bind:class="{'dis-none' : !showAddModal}" x-on:click="showAddModal = false"></div>
-  <div class="add_user_modal container rounded_top_30 trans-0-1" x-bind:class="{'show' : showAddModal}">
+  <div class="add_user_modal_black" x-show="showAddModal" x-transition x-on:click="showAddModal = false"></div>
+  <div class="add_user_modal container rounded_top_30 trans-0-3" x-bind:class="showAddModal && 'show'">
     <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center-align">
       <h5>
         <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person_add</i>
