@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/7e901d420c.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="/assests/images/squid-game-logo.ico">
 </head>
-<body>
+<body x-data="usersData">
 
     <nav>
     <div class="nav-wrapper indigo accent-3 top-navbar">
@@ -61,7 +61,8 @@
 
   <!-- Add Button -->
   <div class="col s12 m6 l4 p-l-10 p-r-10 p-t-10">
-    <button id="add_user_button" class="waves-effect waves-light btn blue darken-2 w-full radius" style="margin-top: 10px;">
+    <button id="add_user_button" class="waves-effect waves-light btn blue darken-2 w-full radius"
+     style="margin-top: 10px;" x-on:click="showAddModal = true">
       <i class="material-icons left">add</i>
       Add Guard
     </button>
@@ -78,32 +79,83 @@
     </div>
   </div>
 
+  <!-- -------- circle loading -------- -->
+  <template x-if="isLoading">
+    
+    <div class="center-align">
+      <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </template>
+
+    
+
   <div class="col l2 hide-on-med-and-down"></div>
 
   </section>
 
   <!-- ------- list on mobile------ -->
 
-  <section>
+  <section class="user_list_section" x-init="getUsers()">
     <ul class="collapsible hide-on-med-and-up">
-      <li class="user_list_item">
+      <template x-for="user in users">
+        <li class="user_list_item">
         <div class="collapsible-header">
           <i class="material-icons blue-text darken-2 user_list_arrow_icon">arrow_drop_down_circle</i>
-          Mahdi Mdian
+          <span x-text="user.name"></span>
         </div>
-
           <div class="collapsible-body"> 
             <div class="p-all-5">
               <span class="f-bold">Username: </span>
-              <span>MahdiK</span>
+              <span x-text="user.username"></span>
             </div>
             <div class="p-all-5">
               <span class="f-bold">Email: </span>
-              <span>mirdamadiyans@gmail.com</span>
+              <span x-text="user.email"></span>
             </div>
             <div class="p-all-5">
               <span class="f-bold">address: </span>
-              <span>example</span>
+              <span x-text="user.address.city+'-'+user.address.street"></span>
             </div>
             <div class="p-all-5">
               <span class="f-bold">action: </span>
@@ -112,7 +164,8 @@
             </div>
 
           </div>
-      </li>
+        </li>
+      </template>
     </ul>
 
     <!-- --------list on desktop-------- -->
@@ -134,42 +187,20 @@
         </thead>
 
         <tbody class="desktop_table_body">
-          <tr>
-            <td>1</td>
-            <td>Mahdi</td>
-            <td>SMahdik88</td>
-            <td>example@gmail.com</td>
-            <td>example</td>
-            <td>
-              <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
-              <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
-                delete_forever</i>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mahdi</td>
-            <td>SMahdik88</td>
-            <td>example@gmail.com</td>
-            <td>example</td>
-            <td>
-              <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
-              <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
-                delete_forever</i>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mahdi</td>
-            <td>SMahdik88</td>
-            <td>example@gmail.com</td>
-            <td>example</td>
-            <td>
-              <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
-              <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
-                delete_forever</i>
-            </td>
-          </tr>
+          <template x-for="user in users">
+            <tr>
+              <td x-text="user.id"></td>
+              <td x-text="user.name"></td>
+              <td x-text="user.username"></td>
+              <td x-text="user.email"></td>
+              <td x-text="user.address.city+'-'+user.address.street"></td>
+              <td>
+                <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
+                <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
+                  delete_forever</i>
+              </td>
+            </tr>
+          </template>
           <tr>
             <td>1</td>
             <td>Mahdi</td>
@@ -217,8 +248,8 @@
   
   <!-- -------- form add guard -------- -->
 
-  <div class="add_user_modal_black dis-none"></div>
-  <div class="add_user_modal container rounded_top_30 trans-0-1">
+  <div class="add_user_modal_black" x-bind:class="{'dis-none' : !showAddModal}" x-on:click="showAddModal = false"></div>
+  <div class="add_user_modal container rounded_top_30 trans-0-1" x-bind:class="{'show' : showAddModal}">
     <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center-align">
       <h5>
         <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person_add</i>
@@ -249,7 +280,7 @@
   </div>
 
     <script src="/assests/js/axios.js"></script>
-    <script src="/assests/js/alpinejscontroller/maincontroller.js"></script>
+    <script src="/assests/js/alpinejscontroller/Userscontroller.js"></script>
     <script defer src="/assests/js/alpine.js"></script>
     <script src="/assests/materialize/js/materialize.min.js"></script>
     <script src="/assests/js/user.js"></script>
