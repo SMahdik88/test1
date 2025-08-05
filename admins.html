@@ -156,7 +156,7 @@
             </div>
             <div class="p-all-5">
               <span class="f-bold">address: </span>
-              <span x-text="user.address.city+'-'+user.address.street"></span>
+              <span x-text="(user.address?.city || '') + '-' + (user.address?.street || '')"></span>
             </div>
             <div class="p-all-5">
               <span class="f-bold">action: </span>
@@ -194,7 +194,7 @@
               <td x-text="user.name"></td>
               <td x-text="user.username"></td>
               <td x-text="user.email"></td>
-              <td x-text="user.address.city+'-'+user.address.street"></td>
+              <td x-text="(user.address?.city || '') + '-' + (user.address?.street || '')"></td>
               <td>
                 <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
                 <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
@@ -251,18 +251,24 @@
 
       <form>
         <div class="input-field">
-          <input id="name" type="text" class="validate">
-          <label for="name">name</label> 
+          <input id="name" type="text" class="validate" x-model="newUserInfo.name">
+          <label for="name">name</label>
+          
         <div class="input-field">
-          <input id="username" type="text" class="validate">
+          <input id="username" type="text" class="validate" x-model="newUserInfo.username">
           <label for="username">username</label>
+
         <div class="input-field">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" x-model="newUserInfo.email">
           <label for="email">Email</label>
         </div>
 
         <button type="button" class="waves-effect waves-light btn blue darken-2 m-t-20 m-b-10
-           w-full max-w-250 rounded_pill">
+           w-full max-w-250 rounded_pill"
+           x-on:click="handleSubmitAddUserForm()"
+           x-bind:class="{'pulse': isLoading}"
+           x-bind:disabled="isLoading">
+          
           submit
 
         </button>

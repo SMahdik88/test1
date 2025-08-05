@@ -10,6 +10,11 @@ document.addEventListener('alpine:init', () => {
             itemsCount: 4,
             currentPage: 1,
             searchChar: "",
+            newUserInfo:{
+                name:"",
+                username:"",
+                email:""
+            },
             getUsers(){
                 this.isLoading = true
                 axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>{                   
@@ -48,6 +53,30 @@ document.addEventListener('alpine:init', () => {
                     username.includes(value) || user.email.includes(value)))
                     this.currentPage = 1
                     this.pagination()
+            },
+            handleSubmitAddUserForm(){
+                this.isLoading = true
+                axios.post("https://jsonplaceholder.typicode.com/users", this.newUserInfo).
+                then((res)=>{    
+                    if (res.status = 201){
+                        this.mainUsers.push(res.data)
+                        this.showAddModal = false
+                        this.handleResetForm()
+                        this.pagination()
+                        M.toast({html: 'کاربر با موفقیت ایجاد شد!', classes: 'rounded green'});
+                    }               
+                    console.log(res)
+                }).finally(()=>{
+                    this.isLoading = false
+                })
+            },
+            handleResetForm(){
+                this.newUserInfo = {
+                    name: "",
+                    username: "",
+                    email: ""
+
+                }
             }
         }
     })
