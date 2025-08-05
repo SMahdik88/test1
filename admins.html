@@ -69,9 +69,10 @@
   </div>
 
   <!-- Search Box -->
-  <div class="col s12 m6 l8 p-l-10 p-r-10 p-t-10">
+  <div class="col s12 m6 l8 p-l-10 p-r-10 p-t-10"
+  x-init="$watch('searchChar', (value)=>handleSearch(value))">
     <div class="input-field">
-      <input id="Search" type="text" class="validate">
+      <input id="Search" type="text" class="validate" x-model="searchChar">
       <label for="Search">
         <i class="material-icons search">search</i>  
         Search
@@ -224,7 +225,7 @@
       <strong x-text="currentPage" class="blue-text page_number"></strong>
 
       <div class="pgnation_buttons">
-      <i class="material-icons blue darken-2 white-text m-l-10 m-r-10
+      <i class="material-icons blue darken-2 white-text
         m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius" x-on:click="prevPage()">keyboard_arrow_left
         </i>
       <i class="material-icons blue darken-2 white-text 
