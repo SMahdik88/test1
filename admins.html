@@ -62,7 +62,7 @@
   <!-- Add Button -->
   <div class="col s12 m6 l4 p-l-10 p-r-10 p-t-10">
     <button id="add_user_button" class="waves-effect waves-light btn blue darken-2 w-full radius"
-     style="margin-top: 10px;" x-on:click="showAddModal = true">
+     style="margin-top: 10px;" x-on:click="showAddModal = true; userIdToEdit = null; handleResetForm()">
       <i class="material-icons left">add</i>
       Add Guard
     </button>
@@ -160,8 +160,10 @@
             </div>
             <div class="p-all-5">
               <span class="f-bold">action: </span>
-              <i class="material-icons red-text m-l-5 m-r-5 icons">delete_forever</i>
-              <i class="material-icons yellow-text m-l-5 m-r-5 icons" style="right: 10px;">edit</i>
+              <i class="material-icons red-text m-l-5 m-r-5 icons"
+              x-on:click="handleDeleteUser(user.id)">delete_forever</i>
+              <i class="material-icons yellow-text m-l-5 m-r-5 icons" style="right: 10px;"
+              x-on:click="handleUpdateUser(user)">edit</i>
             </div>
 
           </div>
@@ -196,9 +198,10 @@
               <td x-text="user.email"></td>
               <td x-text="(user.address?.city || '') + '-' + (user.address?.street || '')"></td>
               <td>
-                <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer">edit</i>
-                <i class="material-icons red-text m-l-5 m-r-5 hov-pointer">
-                  delete_forever</i>
+                <i class="material-icons orange-text darken-3 m-l-5 m-r-5 hov-pointer"
+                x-on:click="handleUpdateUser(user)">edit</i>
+                <i class="material-icons red-text m-l-5 m-r-5 hov-pointer"
+                x-on:click="handleDeleteUser(user.id)">delete_forever</i>
               </td>
             </tr>
           </template>
@@ -226,10 +229,12 @@
 
       <div class="pgnation_buttons">
       <i class="material-icons blue darken-2 white-text
-        m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius" x-on:click="prevPage()">keyboard_arrow_left
+        m-l-10 m-r-10 p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius"
+        x-on:click="prevPage()">keyboard_arrow_left
         </i>
       <i class="material-icons blue darken-2 white-text 
-        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius" x-on:click="nextPage()">keyboard_arrow_right
+        p-l-10 p-r-10 p-b-1 p-t-3 waves-effect waves-light radius"
+        x-on:click="nextPage()">keyboard_arrow_right
         </i>
     </div>
     </div>
@@ -246,7 +251,7 @@
     <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center-align">
       <h5>
         <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person_add</i>
-        Add user
+        <span x-text="userIdToEdit ? 'Edit Guard' : 'Add Guard'"></span>
       </h5>
 
       <form>
@@ -265,8 +270,8 @@
 
         <button type="button" class="waves-effect waves-light btn blue darken-2 m-t-20 m-b-10
            w-full max-w-250 rounded_pill"
-           x-on:click="handleSubmitAddUserForm()"
-           x-bind:class="{'pulse': isLoading}"
+           x-on:click="userIdToEdit ? handleConfirmEditUser() : handleSubmitAddUserForm()"
+           x-bind:class="{'pulse': isLoading, 'orange' : userIdToEdit}"
            x-bind:disabled="isLoading">
           
           submit
